@@ -5,6 +5,12 @@ from app.main import app
 client = TestClient(app)
 
 
+def test_root():
+    r = client.get("/")
+    assert r.status_code == 200
+    assert r.json()["message"] == "Service DevOps ESISA actif"
+
+
 def test_health():
     r = client.get("/health")
     assert r.status_code == 200
