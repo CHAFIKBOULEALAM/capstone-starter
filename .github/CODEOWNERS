@@ -1,2 +1,7 @@
-/app/ @ORG/dev-lead
-/k8s/ @ORG/ops-lead
+# CODEOWNERS - DevOps Fil Rouge
+# syntax: path @username
+/app/ @chafikboulealam
+/k8s/ @chafik-boulealam-esisa
+/infra/ @chafik-boulealam-esisa
+/ml/ @chafikboulealam
+/.github/ @chafikboulealam @chafik-boulealam-esisa
