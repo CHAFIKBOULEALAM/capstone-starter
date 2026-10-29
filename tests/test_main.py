@@ -8,7 +8,10 @@ client = TestClient(app)
 def test_root():
     r = client.get("/")
     assert r.status_code == 200
-    assert r.json()["message"] == "Service DevOps ESISA actif"
+    data = r.json()
+    assert data["message"] == "Service DevOps ESISA actif"
+    assert data["service"] == "capstone-platform"
+    assert data["status"] == "operational"
 
 
 def test_health():

@@ -19,7 +19,14 @@ async def metrics_mw(request: Request, call_next):
 
 @app.get("/")
 def read_root():
-    return {"app": "capstone-api", "version": "1.0.0", "message": "Service DevOps ESISA actif"}
+    return {
+        "app": "capstone-api",
+        "version": "1.0.0",
+        "service": "capstone-platform",
+        "status": "operational",
+        "message": "Service DevOps ESISA actif",
+        "author": "devops-team",
+    }
 
 
 @app.get("/health")
