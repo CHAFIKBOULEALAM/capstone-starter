@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: api-secret
+type: Opaque
+# Valeur factice pour le TP : ne jamais committer de vrai secret.
+stringData:
+  API_KEY: "dev-only-not-a-real-key"
