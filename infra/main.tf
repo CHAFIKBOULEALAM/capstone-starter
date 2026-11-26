@@ -1,4 +1,6 @@
 terraform {
+  required_version = ">= 1.5"
+
   required_providers {
     kubernetes = {
       source  = "hashicorp/kubernetes"
@@ -9,20 +11,22 @@ terraform {
 
 provider "kubernetes" {
   config_path    = "~/.kube/config"
-  config_context = "kind-devops"
+  config_context = var.kube_context
 }
 
-variable "namespace" {
-  type    = string
-  default = "capstone"
+module "namespace" {
+  source = "./modules/namespace"
+
+  name = var.namespace
 }
 
-resource "kubernetes_namespace" "app" {
+resource "kubernetes_config_map" "app" {
   metadata {
-    name = var.namespace
+    name      = "api-config"
+    namespace = module.namespace.name
   }
-}
 
-output "namespace" {
-  value = kubernetes_namespace.app.metadata[0].name
+  data = {
+    LOG_LEVEL = var.log_level
+  }
 }

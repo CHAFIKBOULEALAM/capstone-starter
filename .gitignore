@@ -4,3 +4,6 @@ __pycache__/
 *.tfstate*
 .terraform/
 terraform.tfvars
+*.tfvars
+tfplan
+*.tfplan
